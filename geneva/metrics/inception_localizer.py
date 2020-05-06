@@ -20,7 +20,7 @@ from geneva.models.object_localizer import Inception3ObjectLocalizer
 
 
 loaded_model = None
-IMG_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.ppm', '.bmp', '.pgm', '.tif']
+IMG_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.ppm', '.bmp', '.pgm', '.tif')
 
 
 class ImageFolderNonGT(torch.utils.data.Dataset):
