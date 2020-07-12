@@ -81,4 +81,4 @@ if __name__ == '__main__':
         metrics_report['f1'] = io_af1
         metrics_report['cossim'] = io_cs
         metrics_report['relsim'] = io_gs
-    print(metrics_report)
+    # print(metrics_report)

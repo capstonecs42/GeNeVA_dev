@@ -19,7 +19,7 @@ class Logger():
 
     def write_config(self, config):
         """ Logs Config file"""
-        print(config)
+        # print(config)
         with open(self.log_path, 'a') as f:
             f.write(config + '\n')
 
@@ -44,4 +44,4 @@ class Logger():
 
         with open(self.log_path, 'a') as f:
             f.write(info + '\n')
-        print(info)
+        # print(info)

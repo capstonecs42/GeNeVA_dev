@@ -2,7 +2,8 @@
 --dataset=iclevr
 --val_dataset=iclevr_val
 --test_dataset=iclevr_test
---batch_size=32
+--demo_dataset=iclevr_demo
+--batch_size=16
 --num_workers=8
 --epochs=200
 --vis_rate=3
@@ -46,12 +47,13 @@
 --img_encoder_type=conv
 --disc_img_conditioning=subtract
 -disc_sn
---results_path=logs/iclevr_subtract/results
--inference_save_last_only
+--results_path=logs/iclevr_subtract/full_results
+--load_snapshot=logs/iclevr_subtract/snapshot_40000_attn.pth
 -metric_inception_objects
---save_rate=500
+--save_rate=1000
 --wrong_fake_ratio=0.5
 --gen_fusion=concat
 -teacher_forcing
 -use_fg
 -use_fd
+-self_attention

@@ -35,7 +35,6 @@ class ICLEVERDataset(Dataset):
     def __getitem__(self, idx):
         if self.dataset is None:
             self.dataset = h5py.File(self.dataset_path, 'r')
-
         example = self.dataset[self.keys[idx]]
 
         scene_id = example['scene_id'].value

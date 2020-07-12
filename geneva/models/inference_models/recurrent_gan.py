@@ -58,19 +58,18 @@ class InferenceRecurrentGAN():
         if not os.path.exists(cfg.results_path):
             os.mkdir(cfg.results_path)
 
-    def predict(self, batch):
+    def predict(self, batch, prev_image=None):
         with torch.no_grad():
             batch_size = len(batch['image'])
             max_seq_len = batch['image'].size(1)
             scene_id = batch['scene_id']
 
             # Initial inputs for the RNN set to zeros
-            prev_image = torch.FloatTensor(batch['background']).unsqueeze(0) \
-                .repeat(batch_size, 1, 1, 1)
+            if not prev_image:
+                prev_image = torch.FloatTensor(batch['background']).unsqueeze(0).repeat(batch_size, 1, 1, 1)
             hidden = torch.zeros(1, batch_size, self.cfg.hidden_dim)
             generated_images = []
             gt_images = []
-
             for t in range(max_seq_len):
                 turns_word_embedding = batch['turn_word_embedding'][:, t]
                 turns_lengths = batch['turn_lengths'][:, t]
@@ -136,7 +135,6 @@ def _save_predictions(images, text, scene_id, results_path, gt_images):
                         image)
             cv2.imwrite(os.path.join(results_path, str(scene) + '_gt', '{}_{}.png'.format(t, query)),
                         gt_image)
-
 
 def _read_weights(pre_trained_path, iteration):
     if iteration is None:

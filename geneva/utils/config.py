@@ -331,6 +331,10 @@ def parse_config():
                         type=str,
                         help='Validation dataset path key.')
 
+    parser.add_argument('--demo_dataset',
+                        type=str,
+                        help='Demonstration dataset path key.')
+
     parser.add_argument('--vis_server',
                         type=str,
                         default='http://localhost',
@@ -392,6 +396,10 @@ def parse_config():
                         action='store_true',
                         help='a flag which decide whether to use image'
                         'features conditioning in the generator.')
+
+    parser.add_argument('-use_prev_image',
+                        action='store_true',
+                        help='use a designated image as the background so that we can keep drawing')
 
     args = parser.parse_args()
 
